@@ -9,16 +9,11 @@ userInpCov =encodeURIComponent(userInp);
 userInpCov_crprank =userInp.replace(' ','-');
 offSetnumber_coindesk = 0;
 offSetnumber_crptrank = 0;
-
-
-
-
 // url from scraping sites 
 baseUrl_coindesk=`https://api.queryly.com/json.aspx?queryly_key=d0ab87fd70264c0a&query=${userInpCov}&endindex=${offSetnumber_coindesk}&batchsize=50&showfaceted=true&extendeddatafields=creator,creator_slug,subheadlines,primary_section,report_url,section_path,sections_paths,subtype,type,imageresizer,section,sponsored_label,sponsored,promo_image,pubDate&timezoneoffset=-420`
 baseUrl_cointele = 'https://graphcdn.cointelegraph.com/'
 baseLink_cointele = 'https://cointelegraph.com/news/'
 baseUrl_crprank = `https://api.cryptorank.io/v0/news?lang=en&&coinKeys=${userInpCov_crprank}&limit=50&offset=${offSetnumber_crptrank}`
-
 payload = {
     "operationName": "SearchPagePostsQuery",
     "variables": {
@@ -54,9 +49,6 @@ function compare ( a, b ) {
     }
     return 0;
   }
-
-
-
 
 async function scrapeTheSite() {
     // scraping from coindesk
@@ -113,18 +105,13 @@ async function scrapeTheSite() {
     }
     // end of scraping from cryptorank 
 
-
-
     // console.log(resultArr)
     resultArr.sort(compare);
     console.log(resultArr.length)
     // log 10 latest news
     for (let i = 0; i < 10; i++) {
-        console.log(resultArr[i]);
-        
+        console.log(resultArr[i]);        
     }
-
 }
-
 
 scrapeTheSite();
